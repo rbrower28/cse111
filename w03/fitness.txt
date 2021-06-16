@@ -1,0 +1,8 @@
+Name: Sex, Date of Birth
+     Weight, Height, BMI, BMR
+
+Ryan: M, 1999-08-28
+     185 lbs, 5 ft 10 in, bmi: 26.5, bmr: 1947
+
+Caiden: M, 1996-09-30
+     215 lbs, 5 ft 9 in, bmi: 31.7, bmr: 2100

@@ -1,4 +1,4 @@
-from typing import AsyncGenerator
+# from typing import AsyncGenerator
 
 
 print()
@@ -110,5 +110,21 @@ print(bad_guys["batman"]["movie_2"])
 # print()
 # print(bad_guys)
 
+"""
+s = list("23-34-34")
+print(s)
+for i in s:
+    if i == "-":
+        s.remove(i)
+print(s)
+a = ""
+for i in s:
+    print(i)
+    a += i
+print(a)
+"""
+# s = "23-34-34"
+# r = s.replace("-", "")
+# print(r)
 
 print()

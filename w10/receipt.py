@@ -9,18 +9,37 @@ prints both a list of all products and a list of requested items with quantity a
 import csv
 
 def main():
-    
-    # here you put the correct file directory to access "products.csv"
-    products = read_products("cs111/w09/products.csv") # <----
-    
-    # displays the dictionary of products for visualization
-    print("Products")
-    for p in products:
-        print(f"{p} {products[p]}")
+
+    print()
+    print("Welcome to Ryansons Grocery Store!")
     print()
 
-    # here you put the correct file directory to access "request.csv"
-    process_request("cs111/w09/request.csv", products) # <----
+    try:
+        
+        # here you put the correct file directory to access "products.csv"
+        products = read_products("products.csv") # <----
+        
+        """ displays the dictionary of products for visualization.
+        UNCOMMENT THE FOLLOWING LINES TO SEE ALL PRODUCTS IN THE TERMINAL"""
+        # print("Here is a list of our products:")
+        # for p in products:
+        #     print(f"{p} {products[p]}")
+        # print()
+
+        # here you put the correct file directory to access "request.csv"
+        process_request("request.csv", products) # <----
+
+    except FileNotFoundError as error:
+        error = str(error).strip().split()
+        filename = error[len(error) - 1]
+
+        print(f"The filename or directory of {filename} is incorrect.\nPlease adjust it and try again.")
+
+    except PermissionError:
+        print("You do not have access to this file.")
+
+    except KeyError:
+        print("Error: item missing from request file")
 
 
 def read_products(products_file):
@@ -72,7 +91,10 @@ def process_request(request_file, products):
         request_list = csv.reader(request_file)
         
         next(request_list) # skips the titles on the first line
-        print("Requested Items") # starts with a title
+        print("Your cart:") # starts with a title
+
+        prod_total = 0 # sets the total amount of items
+        subtotal = 0 # sets the subtotal
 
         for i in request_list:
             prod_num = i[0] # ex. D150
@@ -82,11 +104,54 @@ def process_request(request_file, products):
                 prod_name = products[prod_num][0] # ex. "1 gallon milk"
                 prod_price = float(products[prod_num][1]) # ex. 2.85
 
+                # adds the number of items to the item total
+                prod_total += prod_quant
+
+                # adds the item price for the desired quantity to the subtotal
+                subtotal += prod_quant * prod_price
+
                 # prints the product name, amount requested and the product price
-                print(f"{prod_name}: {prod_quant} @ {prod_price}") # ex. "1 gallon milk: 2 @ 2.85"
+                print(f"{prod_name}: {prod_quant} @ ${prod_price}") # ex. "1 gallon milk: 2 @ $2.85"
 
             else: # if the requested product doesnt match with one on the list
                 print(f"Input error: product {prod_num} not recognized")
+
+    print()
+
+    # displays the total amount of items purchased
+    print(f"Your cart contains {prod_total} items")
+
+    # displays the subtotal (without tax) under the product list
+    print(f"Your subtotal is: ${subtotal:.2f}")
+
+    # calculates and prints the amount of tax at a 6% rate
+    tax = subtotal * .06
+    print(f"Tax: ${tax:.2f}")
+    print()
+
+    # calculates the total and prints
+    total = subtotal + tax
+    print(f"Your total is: ${total:.2f}")
+
+    # displays a short message with the date and time
+    print("Thank you for shopping with Ryansons!\n"
+            f"Cashier: Ryan  -  {get_time()}")
+    print()
+
+
+
+def get_time():
+    # Import the datatime module so that
+    # it can be used in this program.
+    from datetime import datetime
+
+    # Call the now() method to get the current date and
+    # time as a datetime object from the computer's clock.
+    current_date_and_time = datetime.now()
+
+    # Format and print the current date and time to include
+    # only the day of the week, the hour, and the minute.
+    return f"{current_date_and_time:%A, %b %d %I:%M %p}"
 
 
 if __name__ == "__main__":

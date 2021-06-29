@@ -51,18 +51,21 @@ print(classroom["Ryan"]["eye_color"])
 """
 class Dog:
 
-    def __init__(self):
-        self.paws = 4
-        self.years_old = 6
+    def __init__(self, name, age, breed):
+        self.num_paws = 4
+        self.years_old = int(age)
+        self.name = name
+        self.breed = breed
     
     def bark(self):
         print("'bork!'")
 
-doug = Dog()
-doug.breed = "terrier"
+doug = Dog("Tom", 12, "poodle")
 
-print(doug.paws)
+print(doug.num_paws)
 print(doug.years_old)
+print(doug.breed)
+doug.breed = "terrier"
 print(doug.breed)
 doug.bark()
 """

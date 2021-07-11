@@ -1,0 +1,37 @@
+Significant Program Proposal
+
+(This is a proposal. All proposals are written with our best knowledge
+at the beginning of a project. As we progress from the beginning to the
+end of a project, we gain more knowledge, and some of the ideas we
+proposed change. This is part of completing any project and is fine.
+However, we still must write a proposal so that our teachers or
+supervisors know what we intend to do. Please answer each of the
+following questions to the best of your knowledge.)
+
+1. What is the title of your program?
+
+    Small Business Assistant
+
+2. What real world problem will your program address or help to solve?
+
+    Scheduling appts and sales for running a one-person business
+
+3. What will you learn from developing this program?
+
+    I will learn how to make an interface that takes and displays calendar information,
+    as well as retrieve and store that information from Firebase.
+
+4. What Python modules will your program use? (Some examples are: csv,
+datetime, functools, matplotlib, math, pandas, pytest, random, requests,
+and tkinter.)
+
+    I'll use tkinter and requests
+
+5. Will you separate your Python program into functions that each
+perform a single task?
+
+    The functions will include add_sale, add_appt, and display_calendar(start_date, end_date)
+
+6. Will you write test functions to test many of your program functions?
+
+    I'll test if the display_calendar function has all of the correct items from Firebase

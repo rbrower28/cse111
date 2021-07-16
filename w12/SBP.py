@@ -1,13 +1,13 @@
 """ The Small Business Planner.
-Uses tkinter and firebase to schedule and organize appointments.
+Uses tkinter and csv files to schedule and organize appointments.
 """
 
 import tkinter as tk
 from datetime import datetime
 import csv
 
-APPT_FILE = "cs111/w12/appt_data.csv"
-SALES_FILE = "cs111/w12/sales_data.csv"
+APPT_FILE = "appt_data.csv"
+SALES_FILE = "sales_data.csv"
 
 
 def main():
